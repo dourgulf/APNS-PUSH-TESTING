@@ -1,2 +1,2 @@
 # APNS-PUSH-TESTING
-APNS push testing using curl command line tools
+APNS push testing command line tools
