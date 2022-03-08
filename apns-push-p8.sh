@@ -31,6 +31,8 @@ read -r -d '' PAYLOAD <<-'EOF'
 }
 EOF
 
+python -c "import sys,json;p=r'''${PAYLOAD}''';print(p);json.loads(p);"
+
 # --------------------------------------------------------------------------
 base64() {
    openssl base64 -e -A | tr -- '+/' '-_' | tr -d =
@@ -45,7 +47,7 @@ HEADER=$(printf '{ "alg": "ES256", "kid": "%s" }' "$AUTH_KEYID" | base64)
 CLAIMS=$(printf '{ "iss": "%s", "iat": %d }' "$AUTH_TEAMID" "$TIMESTAMP" | base64)
 JWT="$HEADER.$CLAIMS.$(sign $HEADER.$CLAIMS)"
 
-curl --verbose \
+curl \
    --header "content-type: application/json" \
    --header "authorization: bearer $JWT" \
    --header "apns-topic: $TOPIC" \
