@@ -16,15 +16,15 @@ read -r -d '' PAYLOAD <<-'EOF'
 {
     "aps": {
         "content-available" : 1,
+        "mutable-content":1,
         "sound": "default",
         "alert": {
-            "key" : "{\"action\":{\"appData\":\"{}\",\"IM5\":{\"fromId\":\"5100881883546282028\",\"svrMsgId\":\"27962305233898833\",\"report\":\"{\\\"channel\\\":5}\",\"targetId\":\"5100123136771272236\",\"msgType\":1,\"convType\":1}}}",
             "title": "标题",
             "subtitle": "副标题",
             "body": "test from dawenhing"
-        }
+        }        
     },
-    "IM5": {
+    "custom": {
         "mykey": "myvalue"
     }
 }
